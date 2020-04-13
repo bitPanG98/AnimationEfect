@@ -54,7 +54,7 @@ public class AnimationEfect {
 
     private int type = 0;
 
-    public static void FadeOut(final long speed, Container miContainer, final int actionAfter) {
+    public static void efectFadeOut(final long speed, Container miContainer, final int actionAfter) {
 
         if (!Util.isTranslucencySupported()) {
             System.err.println("[!]> Atencion: Translucency is not supported in this environment. ");
@@ -109,7 +109,7 @@ public class AnimationEfect {
 
     }
 
-    public static void FadeOut(final int opacityStartLevel, final int opacityEndLevel, final long speed, Container miContainer, final int actionAfter) {
+    public static void efectFadeOut(final int opacityStartLevel, final int opacityEndLevel, final long speed, Container miContainer, final int actionAfter) {
 
         if (!Util.isTranslucencySupported()) {
             System.err.println("[!]> Atencion: Translucency is not supported in this environment. ");
@@ -164,7 +164,7 @@ public class AnimationEfect {
 
     }
 
-    public static void FadeIn(final long speed, Container miContainer, final int actionAfter) {
+    public static void efectFadeIn(final long speed, Container miContainer, final int actionAfter) {
 
         typeContainer = new TypeContainer();
 
@@ -221,7 +221,7 @@ public class AnimationEfect {
 
     }
 
-    public static void FadeIn(final int opacityStartLevel, final int opacityEndLevel, final long speed, Container miContainer, final int actionAfter) {
+    public static void efectFadeIn(final int opacityStartLevel, final int opacityEndLevel, final long speed, Container miContainer, final int actionAfter) {
 
         typeContainer = new TypeContainer();
 
@@ -320,7 +320,7 @@ public class AnimationEfect {
         this.type = type;
     }
 
-    public static void ArcPie2D(final long speed, final Container miContainer, final int actionAfter) {
+    public static void efectArcPie2D(final long speed, final Container miContainer, final int actionAfter) {
 
         typeContainerAllowed = Util.isContainerAllowed(miContainer);
         if (!typeContainerAllowed) {
@@ -374,7 +374,7 @@ public class AnimationEfect {
      * @param container -> TextBox component container.
      *
      */
-    public static void paintTextBoxEmpty(final Container container) {
+    public static void efectPaintTextBoxEmpty(final Container container) {
 
         for (Component miComponent : container.getComponents()) {
 
