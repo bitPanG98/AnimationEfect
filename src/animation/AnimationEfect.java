@@ -52,6 +52,8 @@ public class AnimationEfect {
     private static boolean typeContainerAllowed = false;
     private static TypeContainer typeContainer = null;
 
+    private int type = 0;
+
     public static void FadeOut(final long speed, Container miContainer, final int actionAfter) {
 
         if (!Util.isTranslucencySupported()) {
@@ -315,9 +317,10 @@ public class AnimationEfect {
         if (type < OPEN || type > PIE) {
             throw new IllegalArgumentException("invalid type for Arc: " + type);
         }
+        this.type = type;
     }
 
-    public static void Arc2D(final long speed, final Container miContainer, final int actionAfter) {
+    public static void ArcPie2D(final long speed, final Container miContainer, final int actionAfter) {
 
         typeContainerAllowed = Util.isContainerAllowed(miContainer);
         if (!typeContainerAllowed) {
@@ -338,9 +341,9 @@ public class AnimationEfect {
 
                         for (int i = 0; i <= 360; i += 20) {
                             try {
-                                Thread.sleep(300);
+                                Thread.sleep(speed);
 
-                                Arc2D a2D = new Arc2D.Double(0, 0, miContainer.getWidth(), miContainer.getHeight(), 0, i, Arc2D.OPEN);
+                                Arc2D a2D = new Arc2D.Double(0, 0, miContainer.getWidth(), miContainer.getHeight(), 0, i, Arc2D.PIE);
                                 if (typeContainer.getMiFrame() != null) {
                                     typeContainer.getMiFrame().setShape(a2D);
                                 } else if (typeContainer.getMiDialog() != null) {
@@ -362,18 +365,6 @@ public class AnimationEfect {
             }
         }
 
-    }
-
-    public static void activateShapeRound(JFrame view, boolean activate) {
-        if (activate) {
-//            Shape forma = new RoundRectangle2D.Double(0, 0, view.getWidth(), view.getHeight(), 10000, 2000);
-            for (int i = 0; i < view.getWidth(); i += 10) {
-
-                Shape forma = new RoundRectangle2D.Double(0, 0, i, 10, 200, 200);
-                AWTUtilities.setWindowShape(view, forma);
-            }
-
-        }
     }
 
     /**
