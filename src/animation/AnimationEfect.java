@@ -31,10 +31,17 @@
 package animation;
 
 import com.sun.awt.AWTUtilities;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Shape;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import util.Util;
 
 /**
@@ -186,6 +193,8 @@ public class AnimationEfect {
 
             if (typeContainer.getMiFrame() != null) {
                 typeContainer.getMiFrame().dispose();
+                typeContainer.getMiFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                typeContainer.getMiDialog().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             }
             if (typeContainer.getMiDialog() != null) {
                 typeContainer.getMiDialog().setVisible(false);
@@ -208,4 +217,61 @@ public class AnimationEfect {
 
         }
     }
+    
+    
+    /**
+     * Permite que los componentes(JTexfield o JPasswordField) que se encuentran
+     * en un Container(JPanel), cambien su Background y Border si estan vacios
+     * o no.
+     *
+     * @param container es el contenedor de componentes(JPanel).
+     *
+     */
+    public static void paintInputsEmpty(final Container container) {
+
+        for (Component component : container.getComponents()) {
+
+            if (component instanceof JTextField) {
+
+                ((JTextField) component).addFocusListener(new FocusListener() {
+
+                    @Override
+                    public void focusGained(FocusEvent e) {
+
+                    }
+
+                    @Override
+                    public void focusLost(FocusEvent e) {
+
+                        for (Component component : container.getComponents()) {
+
+                            if (component instanceof JTextField
+                                    || component instanceof JPasswordField) {
+
+                                String valueInput = ((JTextField) component).getText().trim().replace(" ", "");
+                                if (valueInput.equals("")) {
+                                    ((JTextField) component).
+                                            setBackground(new Color(255, 153, 153));
+                                    ((JTextField) component).
+                                            setBorder(BorderFactory.createLineBorder(Color.RED, 1, true));
+                                } else {
+                                    ((JTextField) component).
+                                            setBackground(Color.WHITE);
+                                    ((JTextField) component).
+                                            setBorder(BorderFactory.createLineBorder(
+                                            new java.awt.Color(0, 204, 204), 1, true));
+                                }
+                            }
+
+                        }
+
+                    }
+                });
+
+            }
+
+        }
+
+    }
+    
 }
