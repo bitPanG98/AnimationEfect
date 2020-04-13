@@ -54,7 +54,7 @@ public class AnimationEfect {
     private static boolean typeContainerAllowed = false;
     private static TypeContainer typeContainer = null;
 
-    public static void toFadeWindow(final int opacityStartLevel, final int opacityEndLevel, final long delay, Container miContainer, final int actionAfter) {
+    public static void toFadeWindow(final int opacityStartLevel, final int opacityEndLevel, final long speed, Container miContainer, final int actionAfter) {
 
         if (!Util.isTranslucencySupported()) {
             System.err.println("[!]> Atencion: Translucency is not supported in this environment. ");
@@ -84,7 +84,7 @@ public class AnimationEfect {
 
                                 try {
 
-                                    Thread.sleep(delay);
+                                    Thread.sleep(speed);
 
                                     opacity = i * 0.01f;
                                     setWindowOpacity(opacity);
@@ -109,7 +109,7 @@ public class AnimationEfect {
 
     }
 
-    public static void toShowWindow(final int opacityStartLevel, final int opacityEndLevel, final long delay, Container miContainer, final int actionAfter) {
+    public static void toShowWindow(final int opacityStartLevel, final int opacityEndLevel, final long speed, Container miContainer, final int actionAfter) {
 
         typeContainer = new TypeContainer();
 
@@ -141,7 +141,7 @@ public class AnimationEfect {
 
                                 try {
 
-                                    Thread.sleep(delay);
+                                    Thread.sleep(speed);
 
                                     opacity = i * 0.01f;
                                     setWindowOpacity(opacity);
