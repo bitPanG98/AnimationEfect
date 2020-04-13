@@ -225,7 +225,7 @@ public class AnimationEfect {
      * @param container es el contenedor de componentes(JPanel).
      *
      */
-    public static void paintInputsEmpty(final Container container) {
+    public static void paintTextBoxEmpty(final Container container) {
 
         for (Component component : container.getComponents()) {
 
