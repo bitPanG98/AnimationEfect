@@ -16,21 +16,15 @@
  */
 package animation;
 
-import com.sun.awt.AWTUtilities;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Shape;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.geom.Arc2D;
 import static java.awt.geom.Arc2D.OPEN;
 import static java.awt.geom.Arc2D.PIE;
-import java.awt.geom.RoundRectangle2D;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import util.Util;
@@ -278,38 +272,6 @@ public class AnimationEfect {
 
     }
 
-    private static void setWindowOpacity(float opacity) {
-
-        if (typeContainer.getMiFrame() != null) {
-            typeContainer.getMiFrame().setOpacity(opacity);
-        } else if (typeContainer.getMiDialog() != null) {
-            typeContainer.getMiDialog().setOpacity(opacity);
-        } else {
-            System.out.println("->  null window");
-        }
-
-    }
-
-    private static void setActionAfter(int actionAfter) {
-
-        if (actionAfter == ACTION_DISPOSE) {
-
-            if (typeContainer.getMiFrame() != null) {
-                typeContainer.getMiFrame().dispose();
-            } else if (typeContainer.getMiDialog() != null) {
-                typeContainer.getMiDialog().setVisible(false);
-            } else {
-                //pass
-            }
-
-        } else if (actionAfter == ACTION_EXIT) {
-            System.exit(0);
-        } else {
-            //pass
-        }
-
-    }
-
     /*
      @param type The integer constant that represents the closure
      */
@@ -409,10 +371,41 @@ public class AnimationEfect {
                     }
 
                 }
-            });
 
+            });
         }
 
     }
 
+    private static void setWindowOpacity(float opacity) {
+
+        if (typeContainer.getMiFrame() != null) {
+            typeContainer.getMiFrame().setOpacity(opacity);
+        } else if (typeContainer.getMiDialog() != null) {
+            typeContainer.getMiDialog().setOpacity(opacity);
+        } else {
+            System.out.println("->  null window");
+        }
+
+    }
+
+    private static void setActionAfter(int actionAfter) {
+
+        if (actionAfter == ACTION_DISPOSE) {
+
+            if (typeContainer.getMiFrame() != null) {
+                typeContainer.getMiFrame().dispose();
+            } else if (typeContainer.getMiDialog() != null) {
+                typeContainer.getMiDialog().setVisible(false);
+            } else {
+                //pass
+            }
+
+        } else if (actionAfter == ACTION_EXIT) {
+            System.exit(0);
+        } else {
+            //pass
+        }
+
+    }
 }
